@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PublicNavComponent } from './components/public-nav/public-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatMenuModule } from '@angular/material';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
     SignupComponent,
     HeaderComponent,
     FooterComponent,
-    PublicNavComponent
+    PublicNavComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
