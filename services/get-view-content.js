@@ -1,5 +1,5 @@
 'use strict';
-var contentSrc = require('../config/content-en');
+var contentSrc = require('../content/content-en');
 
 var getContent = {};
 
