@@ -1,7 +1,7 @@
 'use strict';
 
 var jwt = require('jsonwebtoken');
-
+var Sequelize = require('sequelize');
 var config = require('../../config/db-config');
 var db = require('../database');
 var User = require('../../models/user');
@@ -44,12 +44,13 @@ AuthController.authenticateUser = function(req, res) {
             if(!user) {
                 res.status(404).json({ message: 'Authentication failed!' });
             } else { 
-                if(bcrypt.compare(password, user.password)) {
+                if(bcrypt.compareSync(password, user.password)) {
                     var token = jwt.sign(
                         { username: user.username },
                         config.keys.secret,
                         { expiresIn: '30m' }
                     );
+                    
 
                     res.json({
                         success: true,
