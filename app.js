@@ -8,7 +8,7 @@ var passport = require('passport');
 var jwt = require('jsonwebtoken');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/auth');
 
 //Initialize passport strategy
 var hookJWTStrategy = require('./services/passportStrategy');
@@ -47,6 +47,8 @@ app.use('/', express.static(path.join(__dirname, 'dist/ng-exp4')));
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//app.use('/users', usersRouter);
+
+app.use('/api', require('./routes/auth')(passport));
 
 module.exports = app;
