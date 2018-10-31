@@ -2,18 +2,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bodyParser = require('body-parser');
+var sequelize = require('sequelize');
+var passport = require('passport');
+var jwt = require('jsonwebtoken');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+//Initialize passport strategy
+var hookJWTStrategy = require('./services/passportStrategy');
+
 var app = express();
 
-
-// const cors = require('cors');
-// const corsOptions = {
-//   origin: 'http://localhost:4200',
-//   optionsSuccessStatus: 200
-// };
 
 //CORS Middleware
 app.use(function (req, res, next) {
@@ -24,11 +25,19 @@ app.use(function (req, res, next) {
   next();
  });
 
+// 4: Parse as urlencoded and json.
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+// 6: Hook up Passport.
+app.use(passport.initialize());
+hookJWTStrategy(passport);
+
 //app.use(express.static(path.join(__dirname, 'public')));
 
 
