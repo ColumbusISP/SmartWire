@@ -1,6 +1,6 @@
 'use strict';
 import { Component, OnInit } from '@angular/core';
-import { APIService } from '../../services/api.service';
+import { ContentAPIService } from '../../services/content.api.service';
 import { HttpClient } from '@angular/common/http';
 
 export interface CAASContent {
@@ -15,14 +15,14 @@ export interface CAASContent {
 })
 
 export class LoginComponent  implements OnInit {
-  constructor(private http: HttpClient, public contentsrv: APIService) {}
+  constructor(private http: HttpClient, public contentSrv: ContentAPIService) {}
     public vwKeys: any[] = this.getStaticContentArray();
     public vwContent: String[][];
     public data: object;
     public x: String[][];
     
     ngOnInit() {  
-      this.contentsrv.getContent(this.vwKeys.join('&')).subscribe((ndata) => {
+      this.contentSrv.getContent(this.vwKeys.join('&')).subscribe((ndata) => {
           this.data = ndata;
           let x = this.data;
           this.vwContent = new Array;

@@ -4,7 +4,7 @@ module.exports = {
     'authLoginMessage':'Please enter your user credentials',
     'authLoginUserid': 'User ID',
     'authLoginPassword': 'Password',
-    'authSignupTitle': 'Regsiter',
+    'authSignupTitle': 'Register',
     'authSignupMessage': 'Please enter the user credentials you would like to register with',
     'authSignupUserid': 'User ID:',
     'authSignupPassword': 'Password:',

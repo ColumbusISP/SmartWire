@@ -1,42 +1,61 @@
 import { Component, OnInit } from '@angular/core';
-import { APIService } from '../../services/api.service';
+import { ContentAPIService } from '../../services/content.api.service';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
+import { HttpErrorHandler, HandleError } from '../../services/http-error-handler.service';
+import { SignUpService } from './signup.service';
+
+const API_URL = environment.apiUrl;
+
+const stContent: string[] = ['authSignupTitle', 'authSignupMessage', 'authSignupUserid', 'authSignupPassword'];
+
+export interface TmpUser {
+  username: String,
+  password: String;
+}
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
+  providers: [ SignUpService, ContentAPIService ],
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  constructor(private http: HttpClient, public contentsrv: APIService) {}
-  public vwKeys: any[] = this.getStaticContentArray();
-  public vwContent: String[][];
-  public data: object;
-  public x: String[][];
+  
+  constructor(private http: HttpClient, public contentSrv: ContentAPIService, public signupService: SignUpService) {}
+  private handleError: HandleError;
+  public rtrnContent: String[][];
+  public vurl = API_URL + '/api/signup';
 
   ngOnInit() {
-    
-    this.contentsrv.getContent(this.vwKeys.join('&')).subscribe((ndata) => {
-        this.data = ndata;
-        let x = this.data;
-        this.vwContent = new Array;
-        for (let i in this.vwKeys){
-            this.vwContent[i] = [this.vwKeys[i], x[i].name] ;  
-        }
-           console.log(this.vwContent);
-       }
+      // Get Externalized Content
+      this.contentSrv.getContent(stContent.join('&')).subscribe((ndata) => {
+        this.rtrnContent = this.contentSrv.parseContent(ndata);
+        console.log('signup: ' + this.rtrnContent);
+      }
       )
     }
-    public getStaticContentArray(): any {
-      return [
-        'authSignupTitle', 'authSignupMessage', 'authSignupUserid', 'authSignupPassword'
-      ]
-    }
+    
+    //Static content getter function for the html
     public gSC(key:String): any {
-      for (let i in this.vwContent){
-        if (key==this.vwContent[i][0]) {
-          return this.vwContent[i][1];   
+      for (let i in this.rtrnContent){
+        if (key==this.rtrnContent[i][0]) {
+          return this.rtrnContent[i][1];   
         }
       }  
-    }      
+    }     
+
+    public signUp(username: string, password: string): void {
+      username = username.trim();
+      password = password.trim();
+      if (!username) { return; }
+      if (!password) { return; }
+
+      const newtmpUser: TmpUser = { username , password } as TmpUser;
+      this.signupService.addUser(newtmpUser)
+        .subscribe((tmpUser) => {
+          console.log("User Created: " + newtmpUser.username);
+        });
+    }
+     
 }
