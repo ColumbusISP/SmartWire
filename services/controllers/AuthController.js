@@ -50,8 +50,6 @@ AuthController.authenticateUser = function(req, res) {
                         config.keys.secret,
                         { expiresIn: '30m' }
                     );
-                    
-
                     res.json({
                         success: true,
                         token: 'JWT ' + token,

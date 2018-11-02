@@ -5,8 +5,18 @@
   {{gSC('authSignupMessage')}}
  </H2>
 <div>
-  {{gSC('authSignupUserid')}}: <input type="text" name=UserID>
+    <label>{{gSC('authSignupUserid')}}:
+        <input #userid type="text" name=userid>
+      </label>
 </div>
 <div>
-  {{gSC('authSignupPassword')}}: <input type="password" name=UserID>
+    <label>{{gSC('authSignupPassword')}}
+        <input #password type="password" name=password/>
+      </label>
+  
+</div>
+<div>
+    <button (click)="signUp(userid.value, password.value); password.value=''">
+        Register
+      </button>
 </div>

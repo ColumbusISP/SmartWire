@@ -6,10 +6,30 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+      public buttons = [
+        {name:'Home', active:false, path:'home'},
+        {name:'Register', active:false, path: 'signup'},
+        {name:'Login', active:false, path:'login'},
+      ];
 
-  constructor() { }
+  constructor() { 
+    
+  }
 
   ngOnInit() {
+    
+  }
+  toggleClass(button){
+    for (let i in this.buttons){
+      if (this.buttons[i].name == button.name){
+        this.buttons[i].active = true;  
+      }
+      else
+      {
+        this.buttons[i].active = false;
+      }
+    }
+    
   }
 
 }

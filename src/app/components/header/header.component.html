@@ -1,5 +1,10 @@
-  <H1>This is the application header  </H1>
-  <div>
-    <app-public-nav></app-public-nav>
 
+<div class="header">
+    <a href="#default" class="logo">SmartWire</a>
+    <div class="header-right">
+        <div id="myDIV">
+            <button *ngFor="let button of buttons; let i = index" [ngClass]="{'active': button.active}" (click)="toggleClass(button)" routerLink="{{button.path}}">{{ button.name }}</button>
+       </div>
   </div>
+</div>
+  
