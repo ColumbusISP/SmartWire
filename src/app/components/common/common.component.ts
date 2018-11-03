@@ -20,7 +20,7 @@ export class CommonComponent implements OnInit {
     // Get Externalized Content
     this.contentSrv.getContent(this.stContent.join('&')).subscribe((ndata) => {
       this.rtrnContent = this.contentSrv.parseContent(ndata);
-      console.log('signup content: ' + this.rtrnContent);
+      console.log('Content: ' + this.rtrnContent);
     }
     )
   }
