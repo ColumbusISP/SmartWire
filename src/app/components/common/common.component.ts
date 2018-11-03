@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { ContentAPIService } from '../../services/content.api.service';
 
 @Component({
-  selector: 'app-common']
+  selector: 'app-common'
 })
 
 
@@ -20,7 +20,7 @@ export class CommonComponent implements OnInit {
     // Get Externalized Content
     this.contentSrv.getContent(this.stContent.join('&')).subscribe((ndata) => {
       this.rtrnContent = this.contentSrv.parseContent(ndata);
-      console.log('Content: ' + this.rtrnContent);
+      console.log('content: ' + this.rtrnContent);
     }
     )
   }
