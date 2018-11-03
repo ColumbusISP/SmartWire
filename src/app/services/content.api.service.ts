@@ -20,13 +20,9 @@ export class ContentAPIService {
     public vwContent: String[][];
 
     public getContent(contentKeys: String): Observable<any[]> {
-      
       return this.http.get<any[]>(this.vurl+contentKeys)
-     
       }
-  
     public parseContent(vwKeys: object): any {
-        //this.data = ndata;
         let x = vwKeys;
         this.vwContent = new Array;
         for (let i in vwKeys){

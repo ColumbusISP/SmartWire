@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { ContentAPIService } from './services/content.api.service';
@@ -15,6 +15,19 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { HomeComponent } from './components/home/home.component';
 import { HttpErrorHandler } from './services/http-error-handler.service';
 import { MessageService } from './services/message.service';
+import { SecureHomeComponent } from './components/secure/secure-home/secure-home.component';
+import { ProfileComponent } from './components/secure/profile/profile.component';
+//import { ErrorInterceptor } from './services/error.interceptor';
+//import { JwtInterceptor } from './services/jwt.interceptor';
+//import { JwtHelperService } from '@auth0/angular-jwt';
+//import { JwtHelperService  } from '@auth0/angular-jwt';
+
+import { JwtModule   } from '@auth0/angular-jwt';
+
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
+
 
 
 @NgModule({
@@ -24,7 +37,9 @@ import { MessageService } from './services/message.service';
     SignupComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    SecureHomeComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -38,10 +53,20 @@ import { MessageService } from './services/message.service';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    JwtModule .forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:3000']
+        //blacklistedRoutes: ['localhost:3000/auth/']
+      }
+    })
   ],
   providers: [
+  //  { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  //  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     ContentAPIService,
+    //JwtHelperService,    
     HttpErrorHandler,
     MessageService
   ],

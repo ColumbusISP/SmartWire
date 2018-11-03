@@ -32,17 +32,18 @@ AuthController.signUp = function(req, res) {
 }
 
 // Authenticate a user.
-AuthController.authenticateUser = function(req, res) {
+AuthController.authenticateUser = function(req, res, next) {
     if(!req.body.username || !req.body.password) {
-        res.status(404).json({ message: 'Username and password are needed!' });
+        res.status(404).json({ errorcode: 'Auth-01', message: 'Username and password are needed!' });
     } else {
         var username = req.body.username,
             password = req.body.password,
             potentialUser = { where: { username: username } };
 
-        User.findOne(potentialUser).then(function(user) {
+        User.findOne(potentialUser).then(function(user, err) {
             if(!user) {
-                res.status(404).json({ message: 'Authentication failed!' });
+                //next(err);
+                res.status(404).json({ errorcode: 'Auth-02', message: 'Authentication failed - No User Found!' });
             } else { 
                 if(bcrypt.compareSync(password, user.password)) {
                     var token = jwt.sign(
@@ -57,12 +58,12 @@ AuthController.authenticateUser = function(req, res) {
                     });
 
                 } else {
-                    res.status(404).json({ message: 'Login failed!' });                    
+                    res.status(404).json({ errorcode: 'Auth-03', message: 'Login failed!' });                    
                 } 
                                 
             }
         }).catch(function(error) {
-            res.status(500).json({ message: 'There was an error!' });
+            res.status(500).json({ errorcode: 'Auth-03', message: 'There was an error!' });
         });
     }
 }
