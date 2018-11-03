@@ -50,11 +50,5 @@ app.use('/', indexRouter);
 //app.use('/users', usersRouter);
 
 app.use('/api', require('./routes/auth')(passport));
-app.use(logErrors);
-
-function logErrors (err, req, res, next) {
-  console.error(err.stack)
-  next(err)
-}
 
 module.exports = app;

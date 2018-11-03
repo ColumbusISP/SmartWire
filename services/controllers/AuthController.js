@@ -1,7 +1,6 @@
 'use strict';
 
 var jwt = require('jsonwebtoken');
-var Sequelize = require('sequelize');
 var config = require('../../config/db-config');
 var db = require('../database');
 var User = require('../../models/user');
@@ -49,7 +48,7 @@ AuthController.authenticateUser = function(req, res, next) {
                     var token = jwt.sign(
                         { username: user.username },
                         config.keys.secret,
-                        { expiresIn: '30m' }
+                        { expiresIn: '1m' }
                     );
                     res.json({
                         success: true,

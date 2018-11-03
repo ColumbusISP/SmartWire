@@ -22,7 +22,6 @@ function hookJWTStrategy(passport) {
                     callback(null, false);
                     return;
                 }
-
                 callback(null, user);
             });
     }));

@@ -39,18 +39,6 @@ var modelOptions = {
 // 3: Define the User model.
 var UserModel = db.define('user', modelDefinition, modelOptions);
 
-// Compares two passwords. - Moved this function to the controller
-/*function comparePasswords(password, callback) {
-    bcrypt.compare(password, this.password, function(error, isMatch) {
-        if(error) {
-            return callback(error);
-        }
-
-        return callback(null, isMatch);
-    });
-}
-*/
-
 // Hashes the password for a user object.
 function hashPassword(user) {
     if(user.changed('password')) {

@@ -57,6 +57,7 @@ ngOnInit() {
             console.log('User Log in response: ' + JSON.stringify(tmpUser));
             let obj = JSON.parse(JSON.stringify(tmpUser));
             if(obj.success){ 
+              
               this.router.navigate([this.returnUrl]);
             }
             else this.error = obj.operation;

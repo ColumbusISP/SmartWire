@@ -17,6 +17,7 @@ import { HttpErrorHandler } from './services/http-error-handler.service';
 import { MessageService } from './services/message.service';
 import { SecureHomeComponent } from './components/secure/secure-home/secure-home.component';
 import { ProfileComponent } from './components/secure/profile/profile.component';
+import { LoginService } from './services/auth/login.service'
 //import { ErrorInterceptor } from './services/error.interceptor';
 //import { JwtInterceptor } from './services/jwt.interceptor';
 //import { JwtHelperService } from '@auth0/angular-jwt';
@@ -63,12 +64,10 @@ export function tokenGetter() {
     })
   ],
   providers: [
-  //  { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-  //  { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     ContentAPIService,
-    //JwtHelperService,    
     HttpErrorHandler,
-    MessageService
+    MessageService,
+    LoginService
   ],
   bootstrap: [AppComponent]
 })
