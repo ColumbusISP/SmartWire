@@ -6,6 +6,7 @@ import { environment } from '../../../environments/environment';
 import { LoginService } from '../../services/auth/login.service';
 import { User } from '../../models/user';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CommonComponent } from '../common/common.component';
 
 const API_URL = environment.apiUrl;
 
@@ -18,33 +19,31 @@ const stContent: string[] = ['authLoginTitle', 'authLoginMessage', 'authLoginUse
   styleUrls: ['./login.component.css']
 })
 
-export class LoginComponent  implements OnInit {
+export class LoginComponent extends CommonComponent {
   public returnUrl: string;
   public error: String = '';
   public rtrnContent: String[][];
   public vurl = API_URL + '/api/login';
   public rtrnCode: any;
 
-  constructor(private http: HttpClient, 
-    public contentSrv: ContentAPIService, 
+  constructor(protected http: HttpClient, 
+    protected contentSrv: ContentAPIService, 
     public loginService: LoginService,
     private route: ActivatedRoute,
-    private router: Router) {}
+    private router: Router) {
+    super(http, contentSrv, stContent);
+  }
   
-ngOnInit() {   
-    // Get Externalized Content
-    this.contentSrv.getContent(stContent.join('&')).subscribe((ndata) => {
-      this.rtrnContent = this.contentSrv.parseContent(ndata);
-      console.log('login content: ' + this.rtrnContent);
-      })
+  ngOnInit() {
+      super.ngOnInit();
       this.loginService.logout();
       //Deep linking Support
       //this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
       this.returnUrl = 'secure-home';
       
-    }
+   }
     
-    public login(username: string, password: string): void {
+  public login(username: string, password: string): void {
       username = username.trim();
       password = password.trim();
       if (!username) { return; }
@@ -67,14 +66,7 @@ ngOnInit() {
           this.error = error;
         }
         );
-    }
+  }
 
-    //Static content getter function for the html
-    public gSC(key:String): any {
-      for (let i in this.rtrnContent){
-        if (key==this.rtrnContent[i][0]) {
-          return this.rtrnContent[i][1];   
-        }
-      }  
-    }     
+  
   }
