@@ -31,7 +31,7 @@ export class SignUpService {
         this.handleError = httpErrorHandler.createHandleError('SignupService');
       }
       
-      /** POST: add a new hero to the database */
+    /** POST: add a new user to the database */
   addUser (tmpUser: TmpUser): Observable<TmpUser> {
     return this.http.post<TmpUser>(this.vurl, tmpUser, httpOptions)
       .pipe(

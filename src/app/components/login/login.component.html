@@ -1,13 +1,25 @@
 
-<H1>
+<H2>
   {{gSC('authLoginTitle')}}
-</H1>
- <H2>
+</H2>
+ <H3>
   {{gSC('authLoginMessage')}}
- </H2>
+ </H3>
+ <div class="alert alert-info" *ngIf="error">{{error}}</div>
+
 <div>
-  {{gSC('authLoginUserid')}}: <input type="text" name=UserID>
+  <label>{{gSC('authLoginUserid')}}:
+    <input #userid type="text" name=userid>
+  </label>
+  
 </div>
 <div>
-  {{gSC('authLoginPassword')}}: <input type="password" name=UserID>
+  <label>{{gSC('authLoginPassword')}}
+    <input #password type="password" name=password/>
+  </label>
+</div>
+<div>
+  <button (click)="login(userid.value, password.value); password.value=''">
+      Login
+    </button>
 </div>
