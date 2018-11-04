@@ -24,8 +24,8 @@ export interface TmpUser {
 })
 export class SignupComponent extends CommonComponent{
   
-  constructor(protected http: HttpClient,
-    protected contentSrv: ContentAPIService,
+  constructor(public http: HttpClient,
+    public contentSrv: ContentAPIService,
     public signupService: SignUpService) {
     super(http, contentSrv, stContent);
   }
@@ -42,7 +42,7 @@ export class SignupComponent extends CommonComponent{
     const newtmpUser: TmpUser = { username , password } as TmpUser;
     this.signupService.addUser(newtmpUser)
       .subscribe((tmpUser) => {
-        console.log("User Created: " + newtmpUser.username);
+        console.debug("User Created: " + newtmpUser.username);
       });
   }
       

@@ -1,19 +1,20 @@
 'use strict';
 
 var jwt = require('jsonwebtoken');
-var Sequelize = require('sequelize');
 var config = require('../../config/db-config');
 var db = require('../database');
 var User = require('../../models/user');
 var bcrypt = require('bcrypt');
-
+var Boom = require('boom');
 // The authentication controller.
 var AuthController = {};
 
 // Register a user.
 AuthController.signUp = function(req, res) {
     if(!req.body.username || !req.body.password) {
-        res.json({ message: 'Please provide a username and a password.' });
+      res.json({ message: 'Please provide a username and a password.' });
+      // Successesful messages do not work in boom!
+      //res.json(Boom.message('Please provide a username and a password.' ));
     } else {
         db.sync().then(function() {
             var newUser = {
@@ -21,21 +22,25 @@ AuthController.signUp = function(req, res) {
                 password: req.body.password
             };
 
-            return User.create(newUser).then(function() {
-                res.status(201).json({ message: 'Account created!' });
-            });
+          return User.create(newUser).then(function () {
+            // Successesful messages do not work in boom!
+            // res.json(Boom.success('Account created!'));
+            res.status(201).json({ message: 'Account created!' });
+          });
         }).catch(function(error) {
-            console.log(error);
-            res.status(403).json({ message: 'Username already exists!' });
+          console.log(error);
+          res.json(Boom.forbidden('Username already exists!'))  ;
+            // res.status(403).json({ message: 'Username already exists!' });
         });
     }
 }
 
 // Authenticate a user.
 AuthController.authenticateUser = function(req, res, next) {
-    if(!req.body.username || !req.body.password) {
-        res.status(404).json({ errorcode: 'Auth-01', message: 'Username and password are needed!' });
-    } else {
+  if (!req.body.username || !req.body.password) {
+    res.json(Boom.forbidden('Username and password are needed!')); 
+//    res.status(403).json({ errorcode: 'Auth-01', message: 'Username and password are needed!' });
+  } else {
         var username = req.body.username,
             password = req.body.password,
             potentialUser = { where: { username: username } };
@@ -43,7 +48,8 @@ AuthController.authenticateUser = function(req, res, next) {
         User.findOne(potentialUser).then(function(user, err) {
             if(!user) {
                 //next(err);
-                res.status(404).json({ errorcode: 'Auth-02', message: 'Authentication failed - No User Found!' });
+              res.json(Boom.forbidden('Authentication failed - No User Found!')); 
+                //res.status(403).json({ errorcode: 'Auth-02', message: 'Authentication failed - No User Found!' });
             } else { 
                 if(bcrypt.compareSync(password, user.password)) {
                     var token = jwt.sign(
@@ -58,12 +64,14 @@ AuthController.authenticateUser = function(req, res, next) {
                     });
 
                 } else {
-                    res.status(404).json({ errorcode: 'Auth-03', message: 'Login failed!' });                    
+                  res.json(Boom.forbidden('Login failed!')); 
+                    //res.status(403).json({ errorcode: 'Auth-03', message: 'Login failed!' });                    
                 } 
                                 
             }
-        }).catch(function(error) {
-            res.status(500).json({ errorcode: 'Auth-03', message: 'There was an error!' });
+        }).catch(function (error) {
+          res.json(Boom.badRequest('Invalid Request'));
+           // res.status(500).json({ errorcode: 'Auth-03', message: 'There was an error!' });
         });
     }
 }
