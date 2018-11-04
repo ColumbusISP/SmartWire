@@ -8,6 +8,7 @@ import { User } from '../../models/user';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CommonComponent } from '../common/common.component';
 
+
 const API_URL = environment.apiUrl;
 
 const stContent: string[] = ['authLoginTitle', 'authLoginMessage', 'authLoginUserid', 'authLoginPassword'];
@@ -59,7 +60,7 @@ export class LoginComponent extends CommonComponent {
               
               this.router.navigate([this.returnUrl]);
             }
-            else this.error = obj.operation;
+            else this.error = obj.message;
               
           },
         error => {

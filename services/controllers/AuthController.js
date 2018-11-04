@@ -12,20 +12,19 @@ var AuthController = {};
 // Register a user.
 AuthController.signUp = function(req, res) {
     if(!req.body.username || !req.body.password) {
-        res.json({ message: 'Please provide a username and a password.' });
+        res.json({ errorcode: 'Reg-01', message: 'Please provide a username and a password.' });
     } else {
         db.sync().then(function() {
             var newUser = {
                 username: req.body.username,
                 password: req.body.password
             };
-
             return User.create(newUser).then(function() {
-                res.status(201).json({ message: 'Account created!' });
+                res.status(201).json({ 'success': true, message: 'Account created!' });
             });
         }).catch(function(error) {
             console.log(error);
-            res.status(403).json({ message: 'Username already exists!' });
+            res.status(403).json({ errorcode: 'Reg-02', message: 'Username already exists!' });
         });
     }
 }

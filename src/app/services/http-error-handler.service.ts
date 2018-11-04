@@ -32,7 +32,6 @@ export class HttpErrorHandler {
     return (error: HttpErrorResponse): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
       let obj = JSON.parse(JSON.stringify(error));
-      //console.error(error); // log to console instead
       console.log(error); // log to console instead
       
       if (obj)
@@ -49,7 +48,8 @@ export class HttpErrorHandler {
       console.log(`${serviceName}: ${operation} failed: ${message}`);
 
       // Let the app keep running by returning a safe result.
-      return of( result );
+      return of( result ) ;
+      
     };
 
   }

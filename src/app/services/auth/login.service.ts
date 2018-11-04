@@ -18,11 +18,6 @@ const httpOptions = {
   })
 };
 
-export interface TmpUser {
-    username: String,
-    password: String;
-  }
-
 @Injectable()
 export class LoginService {
     private handleError: HandleError;
@@ -50,7 +45,7 @@ export class LoginService {
             }
             return user;
         }),
-          catchError(this.handleError('Login User', {'success':false, 'operation': 'incorrect password'} ))
+          catchError(this.handleError('Login User', {'success':false, 'message': 'incorrect password'} ))
         );
   }
   logout() {

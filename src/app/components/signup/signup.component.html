@@ -4,19 +4,29 @@
  <H3>
   {{gSC('authSignupMessage')}}
  </H3>
-<div>
-    <label>{{gSC('authSignupUserid')}}:
-        <input #userid type="text" name=userid>
-      </label>
+ <div class="alert alert-info" *ngIf="error">{{error}}</div>
+
+<div *ngIf="createStatus==''">
+    <div>
+        <label>{{gSC('authSignupUserid')}}:
+            <input #userid type="text" name=userid>
+        </label>
+    </div>
+    <div>
+        <label>{{gSC('authSignupPassword')}}
+            <input #password type="password" name=password/>
+        </label>
+    
+    </div>
+    <div>
+        <button (click)="signUp(userid.value, password.value); password.value=''">
+            Register
+        </button>
+    </div>
 </div>
-<div>
-    <label>{{gSC('authSignupPassword')}}
-        <input #password type="password" name=password/>
-      </label>
-  
-</div>
-<div>
-    <button (click)="signUp(userid.value, password.value); password.value=''">
-        Register
-      </button>
+<div *ngIf="createStatus">
+        <button routerLink="/login">
+            Go to Login
+        </button>
+    
 </div>
