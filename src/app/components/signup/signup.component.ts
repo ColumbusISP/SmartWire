@@ -24,8 +24,8 @@ export interface TmpUser {
 })
 export class SignupComponent extends CommonComponent{
   
-  constructor(protected http: HttpClient,
-    protected contentSrv: ContentAPIService,
+  constructor(public http: HttpClient,
+    public contentSrv: ContentAPIService,
     public signupService: SignUpService) {
     super(http, contentSrv, stContent);
   }

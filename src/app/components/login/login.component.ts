@@ -25,8 +25,8 @@ export class LoginComponent extends CommonComponent {
   public vurl = API_URL + '/api/login';
   public rtrnCode: any;
 
-  constructor(protected http: HttpClient, 
-    protected contentSrv: ContentAPIService, 
+  constructor(public http: HttpClient, 
+    public contentSrv: ContentAPIService, 
     public loginService: LoginService,
     private route: ActivatedRoute,
     private router: Router) {
