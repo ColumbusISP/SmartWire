@@ -22,7 +22,7 @@ describe('SignupComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SignupComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    //fixture.detectChanges();
   });
 
   it('should create', () => {

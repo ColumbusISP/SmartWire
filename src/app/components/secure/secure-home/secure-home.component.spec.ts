@@ -16,7 +16,7 @@ describe('SecureHomeComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(SecureHomeComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    //fixture.detectChanges();
   });
 
   it('should create', () => {
