@@ -17,19 +17,24 @@ import { HttpErrorHandler } from './services/http-error-handler.service';
 import { MessageService } from './services/message.service';
 import { SecureHomeComponent } from './components/secure/secure-home/secure-home.component';
 import { ProfileComponent } from './components/secure/profile/profile.component';
-import { LoginService } from './services/auth/login.service'
-import { RouterModule, Routes } from '@angular/router';
-import { JwtModule, JwtHelperService   } from '@auth0/angular-jwt';
+import { LoginService } from './services/auth/login.service';
 import { FormsModule } from '@angular/forms';
+//import { RouterModule } from '@angular/Router';
 
+//import { ErrorInterceptor } from './services/error.interceptor';
+//import { JwtInterceptor } from './services/jwt.interceptor';
+//import { JwtHelperService } from '@auth0/angular-jwt';
+//import { JwtHelperService  } from '@auth0/angular-jwt';
+
+import { JwtModule   } from '@auth0/angular-jwt';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
 
-const appRoutes: Routes = [
-  { path: 'routing-test', component: HeaderComponent }
-];
+// const appRoutes: Routes = [
+//   { path: 'routing-test', component: HeaderComponent }
+// ];
 
 @NgModule({
   declarations: [
@@ -46,7 +51,7 @@ const appRoutes: Routes = [
     FormsModule,
     BrowserModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes),
+    //RouterModule.forRoot(appRoutes),
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
