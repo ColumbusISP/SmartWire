@@ -3,10 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { ContentAPIService } from '../../services/content.api.service';
 
 @Component({
+<<<<<<< HEAD
   selector: 'app-common'
+=======
+  selector: 'app-common',
+  templateUrl: './common.component.html',
+>>>>>>> 82301b073acfd3901d51e37bbe48fca6348f3713
 })
-
-
 
 export class CommonComponent implements OnInit {
 

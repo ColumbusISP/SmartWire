@@ -20,12 +20,18 @@ const stContent: string[] = ['authSignupTitle', 'authSignupMessage', 'authSignup
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent extends CommonComponent{
+<<<<<<< HEAD
   public vurl = API_URL + '/api/signup';
   public createStatus: string = '';
   public error: string = '';
 
   constructor(protected http: HttpClient,
     protected contentSrv: ContentAPIService,
+=======
+  
+  constructor(public http: HttpClient,
+    public contentSrv: ContentAPIService,
+>>>>>>> 82301b073acfd3901d51e37bbe48fca6348f3713
     public signupService: SignUpService) {
     super(http, contentSrv, stContent);
   }
@@ -40,6 +46,7 @@ export class SignupComponent extends CommonComponent{
     const newtmpUser: User = { username , password } as User;
     this.signupService.addUser(newtmpUser)
       .subscribe((tmpUser) => {
+<<<<<<< HEAD
         let obj = JSON.parse(JSON.stringify(tmpUser));
         if(obj.success){ 
             console.log('User created, return code: ' + JSON.stringify(obj));
@@ -50,6 +57,9 @@ export class SignupComponent extends CommonComponent{
           console.log('User not created, return code: ' + JSON.stringify(obj));
         }
 
+=======
+        console.debug("User Created: " + newtmpUser.username);
+>>>>>>> 82301b073acfd3901d51e37bbe48fca6348f3713
       });
   }
       

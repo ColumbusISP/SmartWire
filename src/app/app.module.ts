@@ -17,6 +17,7 @@ import { HttpErrorHandler } from './services/http-error-handler.service';
 import { MessageService } from './services/message.service';
 import { SecureHomeComponent } from './components/secure/secure-home/secure-home.component';
 import { ProfileComponent } from './components/secure/profile/profile.component';
+<<<<<<< HEAD
 import { LoginService } from './services/auth/login.service'
 //import { ErrorInterceptor } from './services/error.interceptor';
 //import { JwtInterceptor } from './services/jwt.interceptor';
@@ -24,12 +25,19 @@ import { LoginService } from './services/auth/login.service'
 //import { JwtHelperService  } from '@auth0/angular-jwt';
 
 import { JwtModule   } from '@auth0/angular-jwt';
+=======
+import { RouterModule, Routes } from '@angular/router';
+import { JwtModule, JwtHelperService   } from '@auth0/angular-jwt';
+import { FormsModule } from '@angular/forms';
+>>>>>>> 82301b073acfd3901d51e37bbe48fca6348f3713
 
 export function tokenGetter() {
   return localStorage.getItem('token');
 }
 
-
+const appRoutes: Routes = [
+  { path: 'routing-test', component: HeaderComponent }
+];
 
 @NgModule({
   declarations: [
@@ -40,11 +48,13 @@ export function tokenGetter() {
     FooterComponent,
     HomeComponent,
     SecureHomeComponent,
-    ProfileComponent
+    ProfileComponent    
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     HttpModule,
+    RouterModule.forRoot(appRoutes),
     HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -65,10 +75,15 @@ export function tokenGetter() {
   ],
   providers: [
     ContentAPIService,
+<<<<<<< HEAD
+=======
+    JwtHelperService,    
+>>>>>>> 82301b073acfd3901d51e37bbe48fca6348f3713
     HttpErrorHandler,
     MessageService,
     LoginService
   ],
+  exports: [LoginComponent, HeaderComponent, SignupComponent, FooterComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

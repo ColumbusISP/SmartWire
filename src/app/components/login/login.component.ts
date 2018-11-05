@@ -23,12 +23,11 @@ const stContent: string[] = ['authLoginTitle', 'authLoginMessage', 'authLoginUse
 export class LoginComponent extends CommonComponent {
   public returnUrl: string;
   public error: String = '';
-  public rtrnContent: String[][];
   public vurl = API_URL + '/api/login';
   public rtrnCode: any;
 
-  constructor(protected http: HttpClient, 
-    protected contentSrv: ContentAPIService, 
+  constructor(public http: HttpClient, 
+    public contentSrv: ContentAPIService, 
     public loginService: LoginService,
     private route: ActivatedRoute,
     private router: Router) {
@@ -54,7 +53,7 @@ export class LoginComponent extends CommonComponent {
       this.loginService.loginUser(newtmpUser)      
         .subscribe(
           (tmpUser) => {
-            console.log('User Log in response: ' + JSON.stringify(tmpUser));
+            console.debug('User Log in response: ' + JSON.stringify(tmpUser));
             let obj = JSON.parse(JSON.stringify(tmpUser));
             if(obj.success){ 
               
@@ -68,6 +67,4 @@ export class LoginComponent extends CommonComponent {
         }
         );
   }
-
-  
-  }
+}
