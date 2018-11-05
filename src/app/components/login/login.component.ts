@@ -8,6 +8,7 @@ import { User } from '../../models/user';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CommonComponent } from '../common/common.component';
 
+
 const API_URL = environment.apiUrl;
 
 const stContent: string[] = ['authLoginTitle', 'authLoginMessage', 'authLoginUserid', 'authLoginPassword'];
@@ -55,9 +56,10 @@ export class LoginComponent extends CommonComponent {
             console.debug('User Log in response: ' + JSON.stringify(tmpUser));
             let obj = JSON.parse(JSON.stringify(tmpUser));
             if(obj.success){ 
+              
               this.router.navigate([this.returnUrl]);
             }
-            else this.error = obj.operation;
+            else this.error = obj.message;
               
           },
         error => {

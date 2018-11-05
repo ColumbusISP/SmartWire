@@ -12,9 +12,7 @@ var AuthController = {};
 // Register a user.
 AuthController.signUp = function(req, res) {
     if(!req.body.username || !req.body.password) {
-      res.json({ message: 'Please provide a username and a password.' });
-      // Successesful messages do not work in boom!
-      //res.json(Boom.message('Please provide a username and a password.' ));
+        res.json({ errorcode: 'Reg-01', message: 'Please provide a username and a password.' });
     } else {
         db.sync().then(function() {
             var newUser = {
@@ -22,15 +20,13 @@ AuthController.signUp = function(req, res) {
                 password: req.body.password
             };
 
-          return User.create(newUser).then(function () {
-            // Successesful messages do not work in boom!
-            // res.json(Boom.success('Account created!'));
-            res.status(201).json({ message: 'Account created!' });
-          });
+            return User.create(newUser).then(function() {
+                res.status(201).json({ 'success': true, message: 'Account created!' });
+            });
         }).catch(function(error) {
-          console.log(error);
-          res.json(Boom.forbidden('Username already exists!'))  ;
-            // res.status(403).json({ message: 'Username already exists!' });
+            console.log(error);
+            res.status(403).json({ errorcode: 'Reg-02', message: 'Username already exists!' });
+
         });
     }
 }
@@ -55,7 +51,7 @@ AuthController.authenticateUser = function(req, res, next) {
                     var token = jwt.sign(
                         { username: user.username },
                         config.keys.secret,
-                        { expiresIn: '30m' }
+                        { expiresIn: '1m' }
                     );
                     res.json({
                         success: true,

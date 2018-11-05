@@ -5,6 +5,8 @@ import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpErrorHandler, HandleError } from '../../services/http-error-handler.service';
+import { map } from 'rxjs/operators';
+import { User } from '../../models/user';
 
 const API_URL = environment.apiUrl;
 
@@ -14,11 +16,6 @@ const httpOptions = {
     'Authorization': 'my-auth-token'
   })
 };
-
-export interface TmpUser {
-    username: String,
-    password: String;
-  }
 
 @Injectable()
 export class SignUpService {
@@ -30,12 +27,11 @@ export class SignUpService {
         httpErrorHandler: HttpErrorHandler) {
         this.handleError = httpErrorHandler.createHandleError('SignupService');
       }
-      
     /** POST: add a new user to the database */
-  addUser (tmpUser: TmpUser): Observable<TmpUser> {
-    return this.http.post<TmpUser>(this.vurl, tmpUser, httpOptions)
-      .pipe(
-        catchError(this.handleError('Signup User', tmpUser))
+  addUser (tmpUser: User) {
+    return this.http.post<any>(this.vurl, tmpUser, httpOptions)
+      .pipe( 
+        catchError(this.handleError('Signup User', {'success':false, 'message': 'username already exists'} ))
       );
   }
 }

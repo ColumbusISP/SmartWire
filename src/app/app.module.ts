@@ -17,9 +17,11 @@ import { HttpErrorHandler } from './services/http-error-handler.service';
 import { MessageService } from './services/message.service';
 import { SecureHomeComponent } from './components/secure/secure-home/secure-home.component';
 import { ProfileComponent } from './components/secure/profile/profile.component';
+import { LoginService } from './services/auth/login.service'
 import { RouterModule, Routes } from '@angular/router';
 import { JwtModule, JwtHelperService   } from '@auth0/angular-jwt';
 import { FormsModule } from '@angular/forms';
+
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -65,9 +67,9 @@ const appRoutes: Routes = [
   ],
   providers: [
     ContentAPIService,
-    JwtHelperService,    
     HttpErrorHandler,
-    MessageService
+    MessageService,
+    LoginService
   ],
   exports: [LoginComponent, HeaderComponent, SignupComponent, FooterComponent],
   bootstrap: [AppComponent]

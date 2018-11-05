@@ -28,7 +28,6 @@ export class ContentAPIService {
         for (let i in vwKeys){
             this.vwContent[i] = [x[i].id, x[i].name] ;  
         }
-           console.log('content service ' + this.vwContent);
            return this.vwContent;
        }
       
