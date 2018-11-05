@@ -40,6 +40,7 @@ export class SignupComponent extends CommonComponent{
     const newtmpUser: User = { username , password } as User;
     this.signupService.addUser(newtmpUser)
       .subscribe((tmpUser) => {
+
         let obj = JSON.parse(JSON.stringify(tmpUser));
         if(obj.success){ 
             console.log('User created, return code: ' + JSON.stringify(obj));
@@ -49,6 +50,7 @@ export class SignupComponent extends CommonComponent{
           this.error = obj.message;
           console.log('User not created, return code: ' + JSON.stringify(obj));
         }
+
 
       });
   }

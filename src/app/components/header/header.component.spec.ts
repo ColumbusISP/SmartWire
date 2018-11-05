@@ -1,6 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
+
 import { HeaderComponent } from './header.component';
+import { Routes } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+
+const appRoutes: Routes = [
+  { path: 'routing-test', component: HeaderComponent }
+];
+
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -8,7 +16,8 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HeaderComponent ]
+      declarations: [HeaderComponent],
+      imports: [RouterTestingModule],
     })
     .compileComponents();
   }));
@@ -16,7 +25,7 @@ describe('HeaderComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    //fixture.detectChanges();
   });
 
   it('should create', () => {
