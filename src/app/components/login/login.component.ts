@@ -53,9 +53,10 @@ export class LoginComponent extends CommonComponent {
       this.loginService.loginUser(newtmpUser)      
         .subscribe(
           (tmpUser) => {
-            console.debug('User Log in response: ' + JSON.stringify(tmpUser));
             let obj = JSON.parse(JSON.stringify(tmpUser));
-            if(obj.success){ 
+            console.debug('User Log in response: ' + JSON.stringify(obj));
+            
+            if(obj.returnstatus<=2){ 
               
               this.router.navigate([this.returnUrl]);
             }
