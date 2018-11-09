@@ -41,7 +41,7 @@ export class SignupComponent extends CommonComponent{
     this.signupService.addUser(newtmpUser)
       .subscribe((tmpUser) => {
         let obj = JSON.parse(JSON.stringify(tmpUser));
-        if(obj.success){ 
+        if(obj.returnstatus<=2){ 
             console.log('User created, return code: ' + JSON.stringify(obj));
             this.createStatus = 'User registered.'
             }

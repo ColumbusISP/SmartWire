@@ -5,7 +5,12 @@ var config = require('../../config/db-config');
 var db = require('../database');
 var User = require('../../models/user');
 var bcrypt = require('bcrypt');
+var returnhelper = require('../returnHelper');
 
+const SUCCESS = 1;
+const SUCCESS_INFO = 2;
+const ERROR = 4;
+const ERROR_INFO = 8;
 
 // The authentication controller.
 var AuthController = {};
@@ -13,7 +18,8 @@ var AuthController = {};
 // Register a user.
 AuthController.signUp = function(req, res) {
     if(!req.body.username || !req.body.password) {
-        res.json({ errorcode: 'Reg-01', message: 'Please provide a username and a password.' });
+        res.status(200).json(returnhelper.setJSON(ERROR_INFO,'Reg01'));
+        
     } else {
         db.sync().then(function() {
             var newUser = {
@@ -21,11 +27,11 @@ AuthController.signUp = function(req, res) {
                 password: req.body.password
             };
             return User.create(newUser).then(function() {
-                res.status(201).json({ 'success': true, message: 'Account created!' });
+                res.status(200).json(returnhelper.setJSON(SUCCESS,'Reg03'));
             });
         }).catch(function(error) {
             console.log(error);
-            res.status(403).json({ errorcode: 'Reg-02', message: 'Username already exists!' });
+            res.status(200).json(returnhelper.setJSON(ERROR_INFO,'Reg02'));
         });
     }
 }
@@ -33,7 +39,7 @@ AuthController.signUp = function(req, res) {
 // Authenticate a user.
 AuthController.authenticateUser = function(req, res, next) {
     if(!req.body.username || !req.body.password) {
-        res.status(404).json({ errorcode: 'Auth-01', message: 'Username and password are needed!' });
+        res.json(returnhelper.setJSON(4,'Auth01'));
     } else {
         var username = req.body.username,
             password = req.body.password,
@@ -41,28 +47,28 @@ AuthController.authenticateUser = function(req, res, next) {
 
         User.findOne(potentialUser).then(function(user, err) {
             if(!user) {
-                //next(err);
-                res.status(404).json({ errorcode: 'Auth-02', message: 'Authentication failed - No User Found!' });
+                res.status(200).json(returnhelper.setJSON(ERROR_INFO,'Auth02'));
             } else { 
                 if(bcrypt.compareSync(password, user.password)) {
                     var token = jwt.sign(
                         { username: user.username },
                         config.keys.secret,
-                        { expiresIn: '1m' }
+                        { expiresIn: '30m' }
                     );
-                    res.json({
-                        success: true,
-                        token: 'JWT ' + token,
-                        role: user.role
-                    });
-
+                    var payload = {token: 'JWT ' + token, role: user.role}
+                    var returnObj = returnhelper.setJSON(SUCCESS,'Auth05');
+                    //append user object payload to response
+                    returnObj.payload = payload;
+                    res.status(200).json(returnObj);
                 } else {
-                    res.status(404).json({ errorcode: 'Auth-03', message: 'Login failed!' });                    
+                    
+                    res.status(200).json(returnhelper.setJSON(ERROR_INFO,'Auth03')); 
                 } 
                                 
             }
         }).catch(function(error) {
-            res.status(500).json({ errorcode: 'Auth-03', message: 'There was an error!' });
+            console.log(error);
+            res.status(500).json(returnhelper.setJSON(ERROR_INFO,'Auth04'));
         });
     }
 }

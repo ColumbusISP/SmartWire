@@ -1,11 +1,11 @@
 // The User model.
 'use strict'; 
 
-var Sequelize = require('sequelize'),
-    bcrypt = require('bcrypt');
+var Sequelize = require('sequelize');
+var bcrypt = require('bcrypt');
 
-var config = require('../config/db-config'),
-    db = require('../services/database');
+var config = require('../config/db-config');
+var db = require('../services/database');
 
 // 1: The model schema.
 var modelDefinition = {

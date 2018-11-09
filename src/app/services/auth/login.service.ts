@@ -32,8 +32,11 @@ export class LoginService {
   loginUser(tmpUser : User) {
     return this.http.post<any>(this.vurl, tmpUser, httpOptions)
         .pipe(
-          map(user => {
+          map(returnObj => {
             // login successful if there's a jwt token in the response
+            let obj = JSON.parse(JSON.stringify(returnObj));
+            //console.log('Initial Return:' + JSON.stringify(tmpuser));
+            let user = obj.payload;
             if (user && user.token) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
                 localStorage.setItem('currentUser', JSON.stringify(user));
@@ -43,7 +46,7 @@ export class LoginService {
             else{
               console.log('User Token Not available:' + JSON.stringify(user));
             }
-            return user;
+            return returnObj;
         }),
           catchError(this.handleError('Login User', {'success':false, 'message': 'incorrect password'} ))
         );
