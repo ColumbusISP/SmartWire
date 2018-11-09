@@ -1,7 +1,29 @@
-<p>
-  profile works!
-</p>
+<H2>
+    {{gSC('custProfileTitle')}}
+  </H2>
+   <H3>
+    {{gSC('custProfileMessage')}}
+   </H3>
+  <!-- <ng-form #myForm="ngForm"> -->
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+   <div class="alert alert-info" *ngIf="error">{{error}}</div>
   <div>
-  <a routerLink="/secure-home">go to secure home</a>
-</div>
-
+    <label>{{gSC('custProfileFirstName')}}:
+      <input type="text" class="form-control" id="firstname" required
+          [(ngModel)]="profile.firstname" name="firstname" #firstname="ngModel">
+    </label>
+  </div>
+  <div>
+    <label>{{gSC('custProfileLasttName')}}:
+      <input type="text" class="form-control" id="lastname" required
+          [(ngModel)]="profile.lastname" name="lastname" #lastname="ngModel">
+    </label>
+    
+  </div>
+  <div>
+    <label>{{gSC('custProfileEMail')}}:
+      <input type="text" class="form-control" id="email" required
+          [(ngModel)]="profile.email" name="email" #email="ngModel">
+    </label>
+  </div>
+  </form>

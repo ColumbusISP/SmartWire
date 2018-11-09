@@ -7,14 +7,14 @@ var sequelize = require('sequelize');
 var passport = require('passport');
 var jwt = require('jsonwebtoken');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/auth');
-
 //Initialize passport strategy
 var hookJWTStrategy = require('./services/passportStrategy');
 
 var app = express();
 
+var indexRouter = require('./routes/index');
+var authRouter = require('./routes/auth');
+var custRouter = require('./routes/customer/profile');
 
 //CORS Middleware
 app.use(function (req, res, next) {
@@ -45,10 +45,13 @@ app.use(express.static(path.join(__dirname, 'dist/ng-exp4')));
 app.use('/', express.static(path.join(__dirname, 'dist/ng-exp4')));
 
 
-
 app.use('/', indexRouter);
-//app.use('/users', usersRouter);
 
-app.use('/api', require('./routes/auth')(passport));
+app.use('/api', authRouter (passport));
+
+app.use('/api', custRouter (passport));
+
+
+
 
 module.exports = app;
