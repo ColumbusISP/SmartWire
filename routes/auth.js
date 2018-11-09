@@ -11,9 +11,9 @@ var AdminController = require('../services/controllers/adminController');
 
 var APIRoutes = function(passport) {
     
-    router.get('/profile', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, UserController.index));
+    //router.get('/profile', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.user, UserController.index));
 
-    router.get('/admin', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.admin, AdminController.index));
+    //router.get('/admin', passport.authenticate('jwt', { session: false }), allowOnly(config.accessLevels.admin, AdminController.index));
 
     router.post('/signup', AuthController.signUp);
     

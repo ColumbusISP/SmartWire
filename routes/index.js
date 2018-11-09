@@ -5,15 +5,15 @@ var contentService = require('../services/get-view-content');
 
 
 /* GET home page. */
-router.get('/api', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// router.get('/api', function(req, res, next) {
+//   res.render('index', { title: 'Express' });
+// });
 
 
-/* GET home page. */
-router.get('/api/profile', function(req, res, next) {
-  res.send('This is the secure profile area.');
-});
+// /* GET home page. */
+// router.get('/api/profile', function(req, res, next) {
+//   res.send('This is the secure profile area.');
+// });
 
 //Test Service
 router.get('/api/test-service', function(req, res, next) {

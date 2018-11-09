@@ -9,6 +9,10 @@ var db = require('../services/database');
 
 // 1: The model schema.
 var modelDefinition = {
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true
+    },
     username: {
         type: Sequelize.STRING,
         unique: true,
@@ -19,11 +23,26 @@ var modelDefinition = {
         type: Sequelize.STRING,
         allowNull: false
     },   
-
     role: {
         type: Sequelize.INTEGER,
         defaultValue: config.userRoles.user
+    },
+    firstname: {
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false
+    },
+    lastname: {
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false
+    },
+    email: {
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false
     }
+
 };
 
 // 2: The model options.

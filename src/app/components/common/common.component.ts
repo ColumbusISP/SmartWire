@@ -15,6 +15,7 @@ export class CommonComponent implements OnInit {
   protected rtrnContent: String[][];
   constructor(protected http: HttpClient, protected contentSrv: ContentAPIService, protected passedContent: string[]) {
     this.stContent = passedContent;
+    console.log(passedContent);
   }
 
   ngOnInit() {

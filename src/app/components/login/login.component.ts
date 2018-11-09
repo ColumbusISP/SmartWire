@@ -33,7 +33,7 @@ export class LoginComponent extends CommonComponent {
     private router: Router) {
     super(http, contentSrv, stContent);
   }
-  
+   
   ngOnInit() {
       super.ngOnInit();
       this.loginService.logout();
