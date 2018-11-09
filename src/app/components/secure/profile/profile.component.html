@@ -5,7 +5,8 @@
     {{gSC('custProfileMessage')}}
    </H3>
   <!-- <ng-form #myForm="ngForm"> -->
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <form #profileForm="ngForm" >
+  
    <div class="alert alert-info" *ngIf="error">{{error}}</div>
   <div>
     <label>{{gSC('custProfileFirstName')}}:
@@ -26,4 +27,7 @@
           [(ngModel)]="profile.email" name="email" #email="ngModel">
     </label>
   </div>
+  <div>
+  <button type="button" class="btn btn-dark" (click)="update()" [disabled]="!profileForm.form.valid">Update</button>
+</div> 
   </form>

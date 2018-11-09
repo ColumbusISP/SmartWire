@@ -1,4 +1,4 @@
-const Customer = require('../../../models/user');
+const Customer = require('../../../models/profile');
 
 // FETCH All Customers
 exports.findAll = (req, res) => {

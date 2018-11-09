@@ -12,6 +12,9 @@ export class HeaderComponent implements OnInit {
         {name:'Home', active:false, path:'home'},
         {name:'Register', active:false, path: 'signup'},
         {name:'Login', active:false, path:'login'},
+        {name:'Account Summary', active:false, path:'secure-home'},
+        {name:'Profile', active:false, path:'profile'},
+        
       ];
 
   constructor() { 
