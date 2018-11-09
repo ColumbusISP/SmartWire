@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { User } from '../../models/user';
+import { Profile } from '../../models/profile';
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
@@ -25,10 +25,10 @@ export class ProfileService {
     private http: HttpClient
   ) { }
 
-  getCustomer(id: number): Observable<User> {
+  getCustomer(id: number): Observable<Profile> {
     const url = this.vurl+'/'+id;
     //return this.http.post<any>(this.vurl, tmpUser, httpOptions)
-    return this.http.get<User>(url)
+    return this.http.get<Profile>(url)
     .pipe(
       map(returnObj => {
         let obj = JSON.parse(JSON.stringify(returnObj));
@@ -41,7 +41,7 @@ export class ProfileService {
 
 }
 
-  updateCustomer (customer: User): Observable<any> {
+  updateCustomer (customer: Profile): Observable<any> {
     return this.http.put(this.vurl, customer, httpOptions);
   }
 }

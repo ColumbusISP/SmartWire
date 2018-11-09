@@ -8,11 +8,7 @@ var config = require('../config/db-config');
 var db = require('../services/database');
 
 // 1: The model schema.
-var modelDefinition = {
-    id: {
-        type: Sequelize.INTEGER,
-        primaryKey: true
-    },
+var userModelDefinition = {
     username: {
         type: Sequelize.STRING,
         unique: true,
@@ -27,22 +23,7 @@ var modelDefinition = {
         type: Sequelize.INTEGER,
         defaultValue: config.userRoles.user
     },
-    firstname: {
-        type: Sequelize.STRING,
-        unique: true,
-        allowNull: false
-    },
-    lastname: {
-        type: Sequelize.STRING,
-        unique: true,
-        allowNull: false
-    },
-    email: {
-        type: Sequelize.STRING,
-        unique: true,
-        allowNull: false
-    }
-
+    
 };
 
 // 2: The model options.
@@ -56,7 +37,8 @@ var modelOptions = {
 };
 
 // 3: Define the User model.
-var UserModel = db.define('user', modelDefinition, modelOptions);
+var UserModel = db.define('user', userModelDefinition, modelOptions);
+
 
 // Hashes the password for a user object.
 function hashPassword(user) {

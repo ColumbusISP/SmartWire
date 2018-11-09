@@ -46,12 +46,7 @@ app.use('/', express.static(path.join(__dirname, 'dist/ng-exp4')));
 
 
 app.use('/', indexRouter);
-
 app.use('/api', authRouter (passport));
-
 app.use('/api', custRouter (passport));
-
-
-
 
 module.exports = app;

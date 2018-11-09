@@ -4,7 +4,7 @@ import { ContentAPIService } from '../../../services/content.api.service';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../../services/customer/profile';
-import { User } from '../../../models/user';
+import { Profile } from '../../../models/profile';
 
 const stContent: string[] = ['custProfileTitle','custProfileMessage','custProfileFirstName','custProfileLasttName','custProfileEMail']
 
@@ -15,7 +15,7 @@ const stContent: string[] = ['custProfileTitle','custProfileMessage','custProfil
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent extends CommonComponent {
-  profile = new User();
+  profile = new Profile();
   submitted = false;
   message: string;
   currentUser = JSON.parse(localStorage.getItem('currentUser'));
