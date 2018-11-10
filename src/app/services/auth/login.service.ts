@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
 import { User } from '../../models/user';
@@ -56,14 +56,14 @@ export class LoginService {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
   }
-  isAuthenticated(): boolean {
+  isAuthenticated(): Observable<boolean> {
     const user = localStorage.getItem('currentUser');
     const obj = JSON.parse(user);
     if (obj){
       console.log(this.jwtHelper.getTokenExpirationDate(obj.token));
-      return !this.jwtHelper.isTokenExpired(obj.token);
+      return of(!this.jwtHelper.isTokenExpired(obj.token));
     }
-    else return false; 
+    else return of(false); 
   }
   
 }

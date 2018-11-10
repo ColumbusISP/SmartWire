@@ -1,9 +1,16 @@
 
-<div class="header">
+<div class="header" *ngIf="authenticated() == false">
     <a href="#default" class="logo">SmartWire</a>
     <div class="header-right">
         <div id="myDIV">
-            <button *ngFor="let button of buttons; let i = index" [ngClass]="{'active': button.active}" (click)="toggleClass(button)" routerLink="{{button.path}}">{{ button.name }}</button>
+            <ng-container *ngFor="let button of buttons; let i = index" >
+                <button 
+                    [ngClass]="{'active': button.active}" 
+                    (click)="toggleClass(button)" 
+                    [routerLink]="[button.path]">
+                    {{ button.name }}
+                </button>
+            </ng-container>
        </div>
   </div>
 </div>

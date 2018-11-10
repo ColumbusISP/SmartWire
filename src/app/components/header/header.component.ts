@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { LoginService } from '../../services/auth/login.service'
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -8,21 +10,26 @@ import { Component, OnInit } from '@angular/core';
 
 
 export class HeaderComponent implements OnInit {
+      public isAuth: boolean;
       public buttons = [
-        {name:'Home', active:false, path:'home'},
-        {name:'Register', active:false, path: 'signup'},
-        {name:'Login', active:false, path:'login'},
-        {name:'Account Summary', active:false, path:'secure-home'},
-        {name:'Profile', active:false, path:'profile'},
-        
+        {name:'Home', active:false, path:'home', secure:false},
+        {name:'Register', active:false, path: 'signup', secure:false},
+        {name:'Login', active:false, path:'login', secure: false}       
       ];
 
-  constructor() { 
-    
+  constructor(protected loginService: LoginService) { 
   }
 
   ngOnInit() {
     
+  }
+  authenticated() {
+    this.loginService.isAuthenticated().subscribe((isAuth) => {
+      this.isAuth = isAuth;
+      // console.log('Auth: ' + this.isAuth);
+    }
+    )
+    return this.isAuth;
   }
   toggleClass(button){
     for (let i in this.buttons){
@@ -36,5 +43,4 @@ export class HeaderComponent implements OnInit {
     }
     
   }
-
 }
