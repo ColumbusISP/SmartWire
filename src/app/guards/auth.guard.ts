@@ -9,6 +9,7 @@ export class AuthGuard implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         if (this.loginService.isAuthenticated()){
+            console.log('Logged In: ' + true);
             return true;
         }
         // not logged in so redirect to login page with the return url

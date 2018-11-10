@@ -10,7 +10,6 @@ import { Observable } from 'rxjs';
 
 
 export class HeaderComponent implements OnInit {
-      public isAuth: boolean;
       public buttons = [
         {name:'Home', active:false, path:'home', secure:false},
         {name:'Register', active:false, path: 'signup', secure:false},
@@ -24,12 +23,8 @@ export class HeaderComponent implements OnInit {
     
   }
   authenticated() {
-    this.loginService.isAuthenticated().subscribe((isAuth) => {
-      this.isAuth = isAuth;
-      // console.log('Auth: ' + this.isAuth);
-    }
-    )
-    return this.isAuth;
+    return this.loginService.isAuthenticated()
+    
   }
   toggleClass(button){
     for (let i in this.buttons){
