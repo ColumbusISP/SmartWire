@@ -19,6 +19,8 @@ import { SecureHomeComponent } from './components/secure/secure-home/secure-home
 import { ProfileComponent } from './components/secure/profile/profile.component';
 import { LoginService } from './services/auth/login.service';
 import { FormsModule } from '@angular/forms';
+import { JwtInterceptor } from './services/jwt.interceptor'
+
 
 import { JwtModule   } from '@auth0/angular-jwt';
 import { SecureHeaderComponent } from './components/secure/secure-header/secure-header.component';
@@ -68,9 +70,14 @@ export function tokenGetter() {
   ],
   providers: [
     ContentAPIService,
-    HttpErrorHandler,
+    HttpErrorHandler, 
     MessageService,
-    LoginService
+    LoginService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
   ],
   exports: [LoginComponent, HeaderComponent, SignupComponent, FooterComponent],
   bootstrap: [AppComponent]

@@ -7,14 +7,8 @@ import { map } from 'rxjs/operators';
 import { HttpErrorHandler, HandleError } from '../http-error-handler.service';
 import { catchError } from 'rxjs/operators';
 
-
-
 const API_URL = environment.apiUrl;
 
-const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-};
- 
 @Injectable({
   providedIn: 'root'
 })
@@ -42,6 +36,6 @@ export class ProfileService {
 }
 
   updateCustomer (customer: Profile): Observable<any> {
-    return this.http.put(this.vurl, customer, httpOptions);
+    return this.http.put(this.vurl, customer);
   }
 }

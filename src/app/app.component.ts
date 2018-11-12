@@ -16,6 +16,9 @@ export class AppComponent {
 ngOnInit(): void {
 
 }
+authenticated() {
+  return this.loginService.isAuthenticated()
   
+}
 
 }

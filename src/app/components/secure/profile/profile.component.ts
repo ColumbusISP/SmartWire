@@ -31,10 +31,7 @@ export class ProfileComponent extends CommonComponent {
 
     this.profileService.getCustomer(id)
       .subscribe(profile => {
-        
         this.profile = profile;
-        console.debug('User Profile again: ' + JSON.stringify(this.profile));
-        console.debug('User First Name: ' + JSON.stringify(profile.firstname));
         }
       )
   }  

@@ -24,6 +24,6 @@ router.get('/api/test-service', function(req, res, next) {
 });
 
 //Get specific CAAS Content by parameter 
-router.get('/api/get-view-content', contentService.getList); 
+//router.get('/api/get-view-content', contentService.getList); 
 
 module.exports = router;

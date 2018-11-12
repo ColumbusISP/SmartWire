@@ -55,7 +55,8 @@ AuthController.authenticateUser = function(req, res, next) {
                         config.keys.secret,
                         { expiresIn: '30m' }
                     );
-                    var payload = {token: 'JWT ' + token, id: user.id, role: user.role}
+                    //var payload = {token: 'JWT ' + token, id: user.id, role: user.role}
+                    var payload = {token: token, id: user.id, role: user.role}
                     var returnObj = returnhelper.setJSON(SUCCESS,'Auth05');
                     //append user object payload to response
                     returnObj.payload = payload;
