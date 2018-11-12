@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginService } from '../../../services/auth/login.service'
 
 @Component({
   selector: 'app-secure-nav',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SecureNavComponent implements OnInit {
 
-  constructor() { }
+  constructor( protected loginService: LoginService) { }
 
   ngOnInit() {
   }
-
+  authenticated() {
+    return this.loginService.isAuthenticated()
+  }
 }
