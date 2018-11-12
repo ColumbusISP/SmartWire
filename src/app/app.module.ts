@@ -23,6 +23,7 @@ import { JwtInterceptor } from './services/jwt.interceptor'
 
 import { JwtModule   } from '@auth0/angular-jwt';
 import { SecureHeaderComponent } from './components/secure/secure-header/secure-header.component';
+import { SecureNavComponent } from './components/secure/secure-nav/secure-nav.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -42,7 +43,8 @@ export function tokenGetter() {
     HomeComponent,
     SecureHomeComponent,
     ProfileComponent,
-    SecureHeaderComponent    
+    SecureHeaderComponent,
+    SecureNavComponent    
   ],
   imports: [
     FormsModule,
