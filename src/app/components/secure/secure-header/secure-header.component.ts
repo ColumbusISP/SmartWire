@@ -7,7 +7,7 @@ import { LoginService } from '../../../services/auth/login.service'
   styleUrls: ['./secure-header.component.css']
 })
 export class SecureHeaderComponent implements OnInit {
-  public isAuth: boolean;
+  
   public buttons = [
     {name:'Account Summary', active:false, path:'secure-home', secure: true},
     {name:'Profile', active:false, path:'secure-profile', secure: true},
@@ -23,12 +23,7 @@ ngOnInit() {
 
 }
 authenticated() {
-  this.loginService.isAuthenticated().subscribe((isAuth) => {
-    this.isAuth = isAuth;
-    // console.log('Auth: ' + this.isAuth);
-  }
-  )
-  return this.isAuth;
+  return this.loginService.isAuthenticated()
 }
 toggleClass(button){
 for (let i in this.buttons){

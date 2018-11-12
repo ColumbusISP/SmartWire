@@ -56,14 +56,17 @@ export class LoginService {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
   }
-  isAuthenticated(): Observable<boolean> {
+  isAuthenticated(): boolean {
+    
     const user = localStorage.getItem('currentUser');
     const obj = JSON.parse(user);
-    if (obj){
-      console.log(this.jwtHelper.getTokenExpirationDate(obj.token));
-      return of(!this.jwtHelper.isTokenExpired(obj.token));
+    if (obj!=null){
+      if (!this.jwtHelper.isTokenExpired(obj.token)){
+        return true;
+      }
+        else return false; 
     }
-    else return of(false); 
+    else return false; 
   }
   
 }

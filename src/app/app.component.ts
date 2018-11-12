@@ -14,15 +14,8 @@ export class AppComponent {
     
   }
 ngOnInit(): void {
-  this.authenticated();
-  }
-  
-authenticated() {
-  this.loginService.isAuthenticated().subscribe((isAuth) => {
-    this.isAuth = isAuth;
-    // console.log('Auth: ' + this.isAuth);
-  }
-  )
-  return this.isAuth;
+
 }
+  
+
 }
