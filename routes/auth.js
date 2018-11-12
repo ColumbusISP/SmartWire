@@ -8,6 +8,7 @@ var allowOnly = require('../services/routesHelper').allowOnly;
 var UserController = require('../services/controllers/userController');
 var AdminController = require('../services/controllers/adminController');
 var contentService = require('../services/get-view-content');
+var testService = require('../services/test-service');
     
 const customers = require('../services/customer/profile/customerprofile');
 
@@ -31,6 +32,13 @@ var APIRoutes = function(passport) {
 
     // Update a Customer with Id
     router.put('/customer', customers.update);
+
+    router.get('/api/test-service', function(req, res, next) {
+        var vTitle = testService.title,
+          vDesc = testService.description;
+        res.send('results of test-service, title:' + vTitle + ' and desc:' + vDesc);
+      
+      });
     
     return router;
     
