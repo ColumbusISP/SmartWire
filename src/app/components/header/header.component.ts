@@ -11,7 +11,11 @@ import { Observable } from 'rxjs';
 
 export class HeaderComponent implements OnInit {
       public buttons = [
-        {name:'Login', active:false, path:'login'}       
+        {name:'Home', active:false, path:'/'},
+        {name:'Login', active:false, path:'login'},
+        {name:'Register', active:false, path:'signup'}
+
+            
       ];
 
   constructor(protected loginService: LoginService) { 
