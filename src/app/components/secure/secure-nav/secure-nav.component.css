@@ -29,7 +29,7 @@
   }
   
   #menu .sub-menu {
-    background-color: #444;
+    background-color: rgb(248, 241, 241);
     border-width: 1px 1px 0;
     margin: 0 1em;
   }
@@ -99,6 +99,9 @@
   #menu .drop-icon {
     line-height: 1;
   }
+  
+  /* Responsive & Touch-friendly behavior */
+
   @media only screen and (max-width: 64em) and (min-width: 52.01em) {
     #menu li {
       width: 33.333%;
