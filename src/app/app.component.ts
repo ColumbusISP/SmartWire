@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from './services/auth/login.service'
 
 
 @Component({
@@ -8,7 +9,20 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-
-ngOnInit(): void {
+  public isAuth: boolean;
+  constructor(protected loginService: LoginService) { 
+    
   }
+ngOnInit(): void {
+  this.authenticated();
+  }
+  
+authenticated() {
+  this.loginService.isAuthenticated().subscribe((isAuth) => {
+    this.isAuth = isAuth;
+    // console.log('Auth: ' + this.isAuth);
+  }
+  )
+  return this.isAuth;
+}
 }

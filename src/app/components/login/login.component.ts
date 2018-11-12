@@ -40,7 +40,6 @@ export class LoginComponent extends CommonComponent {
       //Deep linking Support
       //this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
       this.returnUrl = 'secure-home';
-      
    }
     
   public login(username: string, password: string): void {
@@ -57,8 +56,8 @@ export class LoginComponent extends CommonComponent {
             console.debug('User Log in response: ' + JSON.stringify(obj));
             
             if(obj.returnstatus<=2){ 
-              
               this.router.navigate([this.returnUrl]);
+                            
             }
             else this.error = obj.message;
               

@@ -19,14 +19,9 @@ import { SecureHomeComponent } from './components/secure/secure-home/secure-home
 import { ProfileComponent } from './components/secure/profile/profile.component';
 import { LoginService } from './services/auth/login.service';
 import { FormsModule } from '@angular/forms';
-//import { RouterModule } from '@angular/Router';
-
-//import { ErrorInterceptor } from './services/error.interceptor';
-//import { JwtInterceptor } from './services/jwt.interceptor';
-//import { JwtHelperService } from '@auth0/angular-jwt';
-//import { JwtHelperService  } from '@auth0/angular-jwt';
 
 import { JwtModule   } from '@auth0/angular-jwt';
+import { SecureHeaderComponent } from './components/secure/secure-header/secure-header.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -45,7 +40,8 @@ export function tokenGetter() {
     FooterComponent,
     HomeComponent,
     SecureHomeComponent,
-    ProfileComponent    
+    ProfileComponent,
+    SecureHeaderComponent    
   ],
   imports: [
     FormsModule,

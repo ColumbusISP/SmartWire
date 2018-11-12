@@ -12,6 +12,8 @@ const routes: Routes = [
     path: '',
     redirectTo: 'home',
     pathMatch: 'full'
+    //component: HomeComponent,
+    //outlet: 'notloggedin'
     
   },
   {
@@ -21,21 +23,31 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+
   },
   {
     path: 'home',
     component: HomeComponent
+ 
   },
   {
     path: 'secure-home',
     component: SecureHomeComponent,
     canActivate: [AuthGuard]
+    
   },
   {
     path: 'secure-profile',
     component: ProfileComponent,
     canActivate: [AuthGuard]
+    
+  },
+  {
+    path: 'logout',
+    component: LoginComponent
+  
   }
+  
 ];
 
 
