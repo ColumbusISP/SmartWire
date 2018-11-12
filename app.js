@@ -11,6 +11,7 @@ var jwt = require('jsonwebtoken');
 var fs = require('fs')
 var morgan = require('morgan')
 var path = require('path')
+var cors = require('cors');
 
 //Initialize passport strategy
 var hookJWTStrategy = require('./services/passportStrategy');
@@ -36,13 +37,10 @@ http.createServer(function (req, res) {
   })
 })
 //CORS Middleware
-app.use(function (req, res, next) {
-  //Enabling CORS
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization');
-  next();
- });
+
+//var cors = require('cors');    
+app.use(cors({credentials: true, origin: 'http://localhost:4200'}));
+
 
 // 4: Parse as urlencoded and json.
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -55,6 +53,13 @@ app.use(cookieParser());
 // 6: Hook up Passport.
 app.use(passport.initialize());
 hookJWTStrategy(passport);
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
 
 //app.use(express.static(path.join(__dirname, 'public')));
 

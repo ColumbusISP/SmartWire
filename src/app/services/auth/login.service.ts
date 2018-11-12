@@ -11,13 +11,6 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 
 const API_URL = environment.apiUrl;
 
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Authorization': 'my-auth-token'
-  })
-};
-
 @Injectable()
 export class LoginService {
     private handleError: HandleError;
@@ -30,15 +23,19 @@ export class LoginService {
       this.handleError = httpErrorHandler.createHandleError('LoginService');
     }
   loginUser(tmpUser : User) {
-    return this.http.post<any>(this.vurl, tmpUser, httpOptions)
+    return this.http.post<any>(this.vurl, tmpUser)
         .pipe(
           map(returnObj => {
             // login successful if there's a jwt token in the response
             let obj = JSON.parse(JSON.stringify(returnObj));
             //console.log('Initial Return:' + JSON.stringify(tmpuser));
             let user = obj.payload;
+
             if (user && user.token) {
                 // store user details and jwt token in local storage to keep user logged in between page refreshes
+                user.fulltoken = user.token;
+                //user.token = user.fulltoken.split(' ');
+                
                 localStorage.setItem('currentUser', JSON.stringify(user));
                 
                 //localStorage.setItem('token', JSON.stringify(user.token));

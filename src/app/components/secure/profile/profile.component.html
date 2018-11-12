@@ -8,6 +8,9 @@
   <form #profileForm="ngForm" >
   
    <div class="alert alert-info" *ngIf="error">{{error}}</div>
+  <div *ngIf="submitted">Changes Submitted.</div>
+  <div *ngIf="submitted==false">
+  
   <div>
     <label>{{gSC('custProfileFirstName')}}:
       <input type="text" class="form-control" id="firstname" required
@@ -30,4 +33,5 @@
   <div>
   <button type="button" class="btn btn-dark" (click)="update()" [disabled]="!profileForm.form.valid">Update</button>
 </div> 
+</div>
   </form>
