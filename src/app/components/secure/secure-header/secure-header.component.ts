@@ -9,9 +9,7 @@ import { LoginService } from '../../../services/auth/login.service'
 export class SecureHeaderComponent implements OnInit {
   
   public buttons = [
-    {name:'Account Summary', active:false, path:'secure-home', secure: true},
-    {name:'Profile', active:false, path:'secure-profile', secure: true},
-    {name:'Logout', active:false, path:'logout', secure: true},
+    {name:'Logout', active:false, path:'logout'}
            
   ];
 

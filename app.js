@@ -18,9 +18,7 @@ var hookJWTStrategy = require('./services/passportStrategy');
 
 var app = express();
 
-var indexRouter = require('./routes/index');
 var authRouter = require('./routes/auth');
-var custRouter = require('./routes/customer/profile');
  
 
 // create a write stream (in append mode)
