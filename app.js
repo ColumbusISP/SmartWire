@@ -27,6 +27,7 @@ var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), {
 // setup the logger
 app.use(morgan('combined', { stream: accessLogStream }));
 
+
 http.createServer(function (req, res) {
   var done = finalhandler(req, res)
   logger(req, res, function (err) {
@@ -62,8 +63,8 @@ passport.deserializeUser(function(user, done) {
 //app.use(express.static(path.join(__dirname, 'public')));
 
 
-app.use(express.static(path.join(__dirname, 'dist/ng-exp4')));
-app.use('/', express.static(path.join(__dirname, 'dist/ng-exp4')));
+app.use(express.static(path.join(__dirname, 'dist/SmartWire')));
+app.use('/', express.static(path.join(__dirname, 'dist/SmartWire')));
 
 
 //app.use('/', indexRouter (passport));
