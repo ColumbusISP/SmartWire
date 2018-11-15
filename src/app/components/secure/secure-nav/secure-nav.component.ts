@@ -8,7 +8,7 @@ import { LoginService } from '../../../services/auth/login.service'
 })
 export class SecureNavComponent implements OnInit {
 
-  constructor( protected loginService: LoginService) { }
+  constructor( private loginService: LoginService) { }
 
   ngOnInit() {
   }

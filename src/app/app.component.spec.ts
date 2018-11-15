@@ -8,7 +8,8 @@ describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent, MockHeaderComponent, MockFooterComponent, MockRouterOutlet
+        AppComponent, MockHeaderComponent, MockFooterComponent, 
+        MockRouterOutlet, MockSecureHeaderComponent, MockSecureNavComponent
       ]
      
     }).compileComponents();
@@ -39,6 +40,20 @@ describe('AppComponent', () => {
   template: ''
 })
 class MockHeaderComponent {
+}
+
+@Component({
+  selector: 'app-secure-header',
+  template: ''
+})
+class MockSecureHeaderComponent {
+}
+
+@Component({
+  selector: 'app-secure-nav',
+  template: ''
+})
+class MockSecureNavComponent {
 }
 
 @Component({
