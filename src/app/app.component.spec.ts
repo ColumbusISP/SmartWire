@@ -1,16 +1,31 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HeaderComponent } from './components/header/header.component';
+import { HttpErrorHandler } from './services/http-error-handler.service';
 import { Component } from '@angular/core';
+import { MessageService } from './services/message.service';
+import { LoginService } from './services/auth/login.service';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+        JwtModule.forRoot({
+          config: {
+            tokenGetter: () => {
+              return '';
+            }
+          }
+        })],
       declarations: [
         AppComponent, MockHeaderComponent, MockFooterComponent, 
         MockRouterOutlet, MockSecureHeaderComponent, MockSecureNavComponent
-      ]
+      ],
+      providers: [MessageService, LoginService, HttpClient, HttpErrorHandler, HttpHandler, JwtHelperService]
      
     }).compileComponents();
   }));
