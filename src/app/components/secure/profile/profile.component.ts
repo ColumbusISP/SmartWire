@@ -27,9 +27,9 @@ export class ProfileComponent extends CommonComponent {
     private router: Router) { 
     super(http, contentSrv, stContent);
 
-    var id = this.currentUser.id;
+    //var id = this.currentUser.id;
 
-    this.profileService.getCustomer(id)
+    this.profileService.getCustomer(this.currentUser.id)
       .subscribe(profile => {
         this.profile = profile;
         }
