@@ -3,10 +3,10 @@
 var router = require('express').Router();
 
 var config = require('../config/db-config');
-var AuthController = require('../services/controllers/authController');
+var AuthController = require('../services/controllers/AuthController');
 var allowOnly = require('../services/routesHelper').allowOnly;
-var UserController = require('../services/controllers/userController');
-var AdminController = require('../services/controllers/adminController');
+var UserController = require('../services/controllers/UserController');
+var AdminController = require('../services/controllers/AdminController');
 var contentService = require('../services/get-view-content');
 var testService = require('../services/test-service');
     
