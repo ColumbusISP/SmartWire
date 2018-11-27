@@ -25,7 +25,7 @@ export class ProfileComponent extends CommonComponent {
     private profileService: ProfileService,
     private route: ActivatedRoute,
     private router: Router) { 
-    super(http, contentSrv, stContent);
+    super(http, contentSrv);
 
     //var id = this.currentUser.id;
 
@@ -35,6 +35,12 @@ export class ProfileComponent extends CommonComponent {
         }
       )
   }  
+  
+  ngOnInit() {
+    super.ngOnInit();
+    super.getViewContent(stContent);
+  }
+
 
   update(): void {
     this.submitted = true;

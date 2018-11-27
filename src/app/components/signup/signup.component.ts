@@ -27,9 +27,15 @@ export class SignupComponent extends CommonComponent{
   constructor(protected http: HttpClient,
     protected contentSrv: ContentAPIService,
     public signupService: SignUpService) {
-    super(http, contentSrv, stContent);
+    super(http, contentSrv);
+    
   }
- 
+  ngOnInit() {
+    super.ngOnInit();
+    super.getViewContent(stContent);
+  }
+
+
   public signUp(username: string, password: string): void {
     this.error = '';
     username = username.trim();
