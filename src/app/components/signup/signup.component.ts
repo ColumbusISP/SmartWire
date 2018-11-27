@@ -31,7 +31,6 @@ export class SignupComponent extends CommonComponent{
     
   }
   ngOnInit() {
-    super.ngOnInit();
     super.getViewContent(stContent);
   }
 
