@@ -25,18 +25,21 @@ export class LoginComponent extends CommonComponent {
   public error: String = '';
   public vurl = API_URL + '/api/login';
   public rtrnCode: any;
+  
 
   constructor(public http: HttpClient, 
     public contentSrv: ContentAPIService, 
     public loginService: LoginService,
     private route: ActivatedRoute,
     private router: Router) {
-    super(http, contentSrv, stContent);
+      super(http, contentSrv);
   }
    
   ngOnInit() {
       super.ngOnInit();
+      super.getViewContent(stContent);
       this.loginService.logout();
+      
       //Deep linking Support
       //this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
       this.returnUrl = 'secure-home';

@@ -11,7 +11,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule, MatMenuModule } from '@angular/material';
 import { HomeComponent } from './components/home/home.component';
 import { HttpErrorHandler } from './services/http-error-handler.service';
 import { MessageService } from './services/message.service';
@@ -19,12 +18,14 @@ import { SecureHomeComponent } from './components/secure/secure-home/secure-home
 import { ProfileComponent } from './components/secure/profile/profile.component';
 import { LoginService } from './services/auth/login.service';
 import { FormsModule } from '@angular/forms';
-import { JwtInterceptor } from './services/jwt.interceptor'
+import { JwtInterceptor } from './services/jwt.interceptor';
+import { CommonComponent } from './components/common/common.component';
 
 
 import { JwtModule   } from '@auth0/angular-jwt';
 import { SecureHeaderComponent } from './components/secure/secure-header/secure-header.component';
 import { SecureNavComponent } from './components/secure/secure-nav/secure-nav.component';
+import { InjectionToken } from '@angular/core';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -33,6 +34,7 @@ export function tokenGetter() {
 // const appRoutes: Routes = [
 //   { path: 'routing-test', component: HeaderComponent }
 // ];
+export const CONTENT_LIST: InjectionToken<string> = new InjectionToken<string>('CONTENT_LIST');
 
 @NgModule({
   declarations: [
@@ -45,7 +47,8 @@ export function tokenGetter() {
     SecureHomeComponent,
     ProfileComponent,
     SecureHeaderComponent,
-    SecureNavComponent    
+    SecureNavComponent,
+    CommonComponent
   ],
   imports: [
     FormsModule,
@@ -56,12 +59,6 @@ export function tokenGetter() {
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    MatMenuModule,
     JwtModule .forRoot({
       config: {
         tokenGetter: tokenGetter,
@@ -79,6 +76,10 @@ export function tokenGetter() {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
       multi: true
+    },
+    { 
+      provide: CONTENT_LIST, 
+      useValue: 'My List Title'
     }
   ],
   exports: [LoginComponent, HeaderComponent, SignupComponent, FooterComponent],

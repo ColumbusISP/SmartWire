@@ -13,13 +13,16 @@ export interface CAASContent {
 
 @Injectable()
 export class ContentAPIService {
+  
   constructor(private http: HttpClient) {}
     
     public vurl = API_URL + '/api/get-view-content?';
+    
     public data: object;
     public vwContent: String[][];
 
     public getContent(contentKeys: String): Observable<any[]> {
+      console.log('api url: ' + this.vurl);
       return this.http.get<any[]>(this.vurl+contentKeys)
       }
     public parseContent(vwKeys: object): any {
