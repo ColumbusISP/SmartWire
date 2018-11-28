@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonComponent } from '../../common/common.component';
 import { ContentAPIService } from '../../../services/content.api.service';
 import { HttpClient } from '@angular/common/http';
-import { Router, ActivatedRoute } from '@angular/router';
 import { ProfileService } from '../../../services/customer/profile';
 import { Profile } from '../../../models/profile';
 
@@ -22,10 +21,8 @@ export class ProfileComponent extends CommonComponent {
 
   constructor(protected http: HttpClient, 
     public contentSrv: ContentAPIService, 
-    private profileService: ProfileService,
-    private route: ActivatedRoute,
-    private router: Router) { 
-    super(http, contentSrv);
+    private profileService: ProfileService) { 
+    super(contentSrv);
 
     //var id = this.currentUser.id;
 
@@ -39,7 +36,6 @@ export class ProfileComponent extends CommonComponent {
   ngOnInit() {
     super.getViewContent(stContent);
   }
-
 
   update(): void {
     this.submitted = true;

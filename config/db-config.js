@@ -4,14 +4,14 @@
 var config = module.exports;
 
 config.db = {
-    user: 'postgres2', 
-    password: 'postgres2',
-    name: 'SmartISP'
+    user: 'SWireDB2', 
+    password: 'SWireDB2',
+    name: 'ebdb'
 };
 
 config.db.details = {
-    host: '104.155.188.242',
-    port: 5432,      
+    host: 'aal6mf33os220a.cguyvc4qhvu0.us-east-2.rds.amazonaws.com',
+    port: 5432,
     dialect: 'postgres',
     operatorsAliases: false
 };

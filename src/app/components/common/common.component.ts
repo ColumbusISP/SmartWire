@@ -1,7 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ContentAPIService } from '../../services/content.api.service';
-import { Inject } from '@angular/core';
 
 @Component({
 
@@ -15,14 +13,11 @@ export class CommonComponent implements OnInit {
 
   protected stContent: String[] = [];
   protected rtrnContent: String[][];
-  constructor(protected http: HttpClient, 
-    protected contentSrv: ContentAPIService) {
-
-  }
+  constructor(protected contentSrv: ContentAPIService) {}
 
   ngOnInit() {
-  
   }
+
   public getViewContent(passedContent: String[]): any {
     this.stContent = passedContent;
     console.log(passedContent);

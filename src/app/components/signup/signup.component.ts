@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ContentAPIService } from '../../services/content.api.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
-import { HttpErrorHandler, HandleError } from '../../services/http-error-handler.service';
 import { SignUpService } from '../../services/auth/signup.service';
-import { extend } from 'webdriver-js-extender'; 
 import { CommonComponent } from '../common/common.component';
 import { User } from '../../models/user';
 import { RouterModule } from '@angular/router';
@@ -27,7 +25,7 @@ export class SignupComponent extends CommonComponent{
   constructor(protected http: HttpClient,
     protected contentSrv: ContentAPIService,
     public signupService: SignUpService) {
-    super(http, contentSrv);
+    super(contentSrv);
     
   }
   ngOnInit() {

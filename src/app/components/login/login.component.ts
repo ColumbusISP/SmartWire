@@ -1,11 +1,11 @@
 'use strict';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ContentAPIService } from '../../services/content.api.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { LoginService } from '../../services/auth/login.service';
 import { User } from '../../models/user';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { CommonComponent } from '../common/common.component';
 
 
@@ -30,13 +30,11 @@ export class LoginComponent extends CommonComponent {
   constructor(public http: HttpClient, 
     public contentSrv: ContentAPIService, 
     public loginService: LoginService,
-    private route: ActivatedRoute,
     private router: Router) {
-      super(http, contentSrv);
+      super(contentSrv);
   }
    
   ngOnInit() {
-      super.ngOnInit();
       super.getViewContent(stContent);
       this.loginService.logout();
       
