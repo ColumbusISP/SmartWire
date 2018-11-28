@@ -4,13 +4,13 @@
 var config = module.exports;
 
 config.db = {
-    user: 'SWireDB1', 
-    password: 'SWireDB1',
-    name: 'SmartWireDB'
+    user: 'SWireDB2', 
+    password: 'SWireDB2',
+    name: 'ebdb'
 };
 
 config.db.details = {
-    host: 'smartwire.cguyvc4qhvu0.us-east-2.rds.amazonaws.com',
+    host: 'aal6mf33os220a.cguyvc4qhvu0.us-east-2.rds.amazonaws.com',
     port: 5432,
     dialect: 'postgres',
     operatorsAliases: false
