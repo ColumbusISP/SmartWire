@@ -19,6 +19,7 @@ export class ContentAPIService {
     public vurl = API_URL + '/api/get-view-content?';
     
     public data: object;
+    //public contentKeys: String[];
     public vwContent: String[][];
 
     public getContent(contentKeys: String): Observable<any[]> {
