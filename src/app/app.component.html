@@ -1,10 +1,16 @@
-
-<!-- <app-header *ngIf="authenticated() == false"></app-header> -->
-<!-- <app-secure-header *ngIf="authenticated()"></app-secure-header> -->
 <app-header></app-header>
 <app-secure-header></app-secure-header>
-<app-secure-nav></app-secure-nav>
-
-
-<router-outlet></router-outlet>
-<app-footer></app-footer>
+        <!-- Page Content -->
+        <div id="page-wrapper" style="min-height: 317px;">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <router-outlet></router-outlet>
+                        </div>
+                        <!-- /.col-lg-12 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- /#page-wrapper -->

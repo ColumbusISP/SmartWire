@@ -26,6 +26,7 @@ import { JwtModule   } from '@auth0/angular-jwt';
 import { SecureHeaderComponent } from './components/secure/secure-header/secure-header.component';
 import { SecureNavComponent } from './components/secure/secure-nav/secure-nav.component';
 import { InjectionToken } from '@angular/core';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -48,7 +49,8 @@ export const CONTENT_LIST: InjectionToken<string> = new InjectionToken<string>('
     ProfileComponent,
     SecureHeaderComponent,
     SecureNavComponent,
-    CommonComponent
+    CommonComponent,
+    SidenavComponent
   ],
   imports: [
     FormsModule,
