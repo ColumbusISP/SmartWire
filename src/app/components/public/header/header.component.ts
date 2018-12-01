@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { LoginService } from '../../services/auth/login.service'
-import { Observable } from 'rxjs';
+import { LoginService } from '../../../services/auth/login.service'
 
 @Component({
   selector: 'app-header',
@@ -28,16 +27,5 @@ export class HeaderComponent implements OnInit {
     return this.loginService.isAuthenticated()
     
   }
-  toggleClass(button){
-    for (let i in this.buttons){
-      if (this.buttons[i].name == button.name){
-        this.buttons[i].active = true;  
-      }
-      else
-      {
-        this.buttons[i].active = false;
-      }
-    }
-    
-  }
+
 }

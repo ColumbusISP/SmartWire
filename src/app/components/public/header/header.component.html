@@ -8,18 +8,18 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="">SmartWire</a>
+            <a class="navbar-brand" [routerLink]="['home']" [queryParams]="{page:1000}">SmartWire</a>
         </div>
         <!-- /.navbar-header -->
 
         <ul class="nav navbar-top-links navbar-right">
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                <a class="dropdown-toggle" data-toggle="dropdown" [routerLink]="['ph']" [queryParams]="{page:1011}">
                     <i class="fa fa-inbox fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-messages">
                     <li>
-                        <a href="">
+                        <a [routerLink]="['ph']" [queryParams]="{page:1012}">
                             <div>
                                 <i class="fa fa-upload fa-fw"></i>
                                 <strong> Outage at Complex</strong>
@@ -32,7 +32,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="">
+                        <a [routerLink]="['ph']" [queryParams]="{page:1013}">
                             <div>
                                 <i class="fa fa-truck fa-fw"></i>
                                 <strong> Work Order on 3rd Floor</strong>
@@ -45,7 +45,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="">
+                        <a [routerLink]="['ph']" [queryParams]="{page:1014}">
                             <div>
                                 <i class="fa fa-envelope fa-fw"></i>
                                 <strong> Planned Maintenance</strong>
@@ -58,7 +58,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a class="text-center" href="">
+                        <a class="text-center" [routerLink]="['ph']" [queryParams]="{page:1015}">>
                             <strong>Message Archive</strong>
                             <i class="fa fa-angle-right"></i>
                         </a>
@@ -68,12 +68,13 @@
             </li>
             <!-- /.dropdown -->
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                <!-- <a class="dropdown-toggle" data-toggle="dropdown" href=""> -->
+                <a class="dropdown-toggle" data-toggle="dropdown" [routerLink]="['ph']" [queryParams]="{page:1020}">
                     <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-tasks">
                     <li>
-                        <a href="">
+                            <a [routerLink]="['ph']" [queryParams]="{page:1021}">
                             <div>
                                 <p>
                                     <strong>My Unit</strong>
@@ -89,7 +90,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="">
+                        <a [routerLink]="['ph']" [queryParams]="{page:1022}">
                             <div>
                                 <p>
                                     <strong>Complex</strong>
@@ -105,7 +106,7 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="">
+                        <a [routerLink]="['ph']" [queryParams]="{page:1023}">
                             <div>
                                 <p>
                                     <strong>Internet</strong>
@@ -131,7 +132,7 @@
                     <li><a [routerLink]="['signup']" ><i class="fa fa-edit fa-fw"></i> Register</a>
                     </li>
                     <li></li>
-                    <li><a [routerLink]="['login']" ><i class="fa fa-sign-out fa-fw"></i> Login</a>
+                    <li><a [routerLink]="['login']"><i class="fa fa-sign-out fa-fw"></i> Login</a>
                     </li>
                 </ul>
                 <!-- /.dropdown-user -->
@@ -156,57 +157,57 @@
                     </li>
                     
                     <li>
-                        <a href=""><i class="fa fa-dashboard"></i> Home</a>
+                        <a [routerLink]="['home']"><i class="fa fa-dashboard"></i> Home</a>
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-sitemap fa-fw"></i> Services<span class="fa arrow"></span></a>
+                        <a [routerLink]="['ph']" [queryParams]="{page:10}"><i class="fa fa-sitemap fa-fw"></i> Services<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
-                                <li><a href="">Internet</a></li>
-                                <li><a href="">Video</a></li> 
-                                <li><a href="">Telephone</a></li>
-                                <li><a href="">Security</a></li>
-                                <li><a href="">Environment</a></li>
+                                <li><a [routerLink]="['ph']" [queryParams]="{page:11}">Internet</a></li>
+                                <li><a [routerLink]="['ph']" [queryParams]="{page:12}">Video</a></li> 
+                                <li><a [routerLink]="['ph']" [queryParams]="{page:13}">Telephone</a></li>
+                                <li><a [routerLink]="['ph']" [queryParams]="{page:14}">Security</a></li>
+                                <li><a [routerLink]="['ph']" [queryParams]="{page:15}">Environment</a></li>
                             </ul>
                             <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-tasks fa-fw"></i> Technology<span class="fa arrow"></span></a>
+                        <a [routerLink]="['ph']" [queryParams]="{page:20}"><i class="fa fa-tasks fa-fw"></i> Technology<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
-                                <li><a href="">Fiber Core</a></li>
-                                <li><a href="">Telematics</a></li>
-                                <li><a href="">Cloud Services</a></li> 
-                                <li><a href="">Privacy and Security</a></li>
+                                <li><a [routerLink]="['ph']" [queryParams]="{page:21}">Fiber Core</a></li>
+                                <li><a [routerLink]="['ph']" [queryParams]="{page:22}">Telematics</a></li>
+                                <li><a [routerLink]="['ph']" [queryParams]="{page:23}">Cloud Services</a></li> 
+                                <li><a [routerLink]="['ph']" [queryParams]="{page:24}">Privacy and Security</a></li>
                             </ul>
                             <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href=""><i class="glyphicon glyphicon-user"></i> Experience<span class="fa arrow"></span></a>
+                        <a [routerLink]="['ph']" [queryParams]="{page:30}"><i class="glyphicon glyphicon-user"></i> Experience<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
-                                <li><a href="">Staying on the Leading Edge</a></li>
-                                <li><a href="">Exceptional Service</a></li>
-                                <li><a href="">The Way You Want It</a></li>
-                                <li><a href="">Your Digital Experience</a></li>
+                                <li><a [routerLink]="['ph']" [queryParams]="{page:31}">Staying on the Leading Edge</a></li>
+                                <li><a [routerLink]="['ph']" [queryParams]="{page:32}">Exceptional Service</a></li>
+                                <li><a [routerLink]="['ph']" [queryParams]="{page:33}">The Way You Want It</a></li>
+                                <li><a [routerLink]="['ph']" [queryParams]="{page:34}">Your Digital Experience</a></li>
                             </ul>
                             <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-key fa-fw"></i> About<span class="fa arrow"></span></a>
+                        <a [routerLink]="['ph']" [queryParams]="{page:40}"><i class="fa fa-key fa-fw"></i> About<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level collapse">
-                                <li><a href="">Who We Are</a></li>
-                                <li><a href="">Our History</a></li>
-                                <li><a href="">Our Mission</a></li>
-                                <li><a href="">Our Commitment</a></li>
+                                <li><a [routerLink]="['ph']" [queryParams]="{page:41}">Who We Are</a></li>
+                                <li><a [routerLink]="['ph']" [queryParams]="{page:42}">Our History</a></li>
+                                <li><a [routerLink]="['ph']" [queryParams]="{page:43}">Our Mission</a></li>
+                                <li><a [routerLink]="['ph']" [queryParams]="{page:44}">Our Commitment</a></li>
                             </ul>
                             <!-- /.nav-second-level -->
                     </li>
                     <li>
-                        <a href=""><i class="fa fa-question-circle fa-fw"></i> Help and Support<span class="fa arrow"></span></a>
+                        <a [routerLink]="['ph']" [queryParams]="{page:50}"><i class="fa fa-question-circle fa-fw"></i> Help and Support<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse">
                             <li>
-                                <a href="blank.html">Help</a>
+                                    <a [routerLink]="['ph']" [queryParams]="{page:51}">Help</a>
                             </li>
                             <li>
-                                <a href="login.html">Support</a>
+                                    <a [routerLink]="['ph']" [queryParams]="{page:52}">Support</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->

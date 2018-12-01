@@ -1,12 +1,12 @@
 'use strict';
 import { Component } from '@angular/core';
-import { ContentAPIService } from '../../services/content.api.service';
+import { ContentAPIService } from '../../../services/content.api.service';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
-import { LoginService } from '../../services/auth/login.service';
-import { User } from '../../models/user';
+import { environment } from '../../../../environments/environment';
+import { LoginService } from '../../../services/auth/login.service';
+import { User } from '../../../models/user';
 import { Router } from '@angular/router';
-import { CommonComponent } from '../common/common.component';
+import { CommonComponent } from '../../common/common/common.component';
 
 
 const API_URL = environment.apiUrl;

@@ -1,5 +1,5 @@
 import { Component, OnInit, Injectable } from '@angular/core';
-import { ContentAPIService } from '../../services/content.api.service';
+import { ContentAPIService } from '../../../services/content.api.service';
 
 @Component({
 

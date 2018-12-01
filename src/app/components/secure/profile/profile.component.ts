@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonComponent } from '../../common/common.component';
+import { CommonComponent } from '../../common/common/common.component';
 import { ContentAPIService } from '../../../services/content.api.service';
 import { HttpClient } from '@angular/common/http';
 import { ProfileService } from '../../../services/customer/profile';

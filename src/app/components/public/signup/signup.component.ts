@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { ContentAPIService } from '../../services/content.api.service';
+import { ContentAPIService } from '../../../services/content.api.service';
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
-import { SignUpService } from '../../services/auth/signup.service';
-import { CommonComponent } from '../common/common.component';
-import { User } from '../../models/user';
+import { environment } from '../../../../environments/environment';
+import { SignUpService } from '../../../services/auth/signup.service';
+import { CommonComponent } from '../../common/common/common.component';
+import { User } from '../../../models/user';
 import { RouterModule } from '@angular/router';
 
 const API_URL = environment.apiUrl;

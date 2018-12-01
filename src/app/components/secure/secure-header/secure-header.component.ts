@@ -23,16 +23,6 @@ ngOnInit() {
 authenticated() {
   return this.loginService.isAuthenticated()
 }
-toggleClass(button){
-for (let i in this.buttons){
-  if (this.buttons[i].name == button.name){
-    this.buttons[i].active = true;  
-  }
-  else
-  {
-    this.buttons[i].active = false;
-  }
-}
 
 }
-}
+
