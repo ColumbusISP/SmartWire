@@ -22,8 +22,11 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css"
+              "src/assets/vendors/bootstrap/css/bootstrap.min.css",
+              "src/assets/vendors/metisMenu/metisMenu.min.css",
+              "src/assets/dist/css/sb-admin-2.min.css",
+              "src/assets/vendors/font-awesome/css/font-awesome.min.css"
+
             ],
             "scripts": []
           },
@@ -72,12 +75,14 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css"
+              "src/assets/vendors/bootstrap/css/bootstrap.min.css",
+              "src/assets/vendors/metisMenu/metisMenu.min.css",
+              "src/assets/dist/css/sb-admin-2.min.css",
+              "src/assets/vendors/font-awesome/css/font-awesome.min.css"
             ],
             "scripts": [],
             "assets": [
-              "src/assets"
+              // "src/assets"
             ]
           }
         },

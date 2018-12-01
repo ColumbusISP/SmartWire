@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SignupComponent } from './components/signup/signup.component';
-import { LoginComponent } from './components/login/login.component';
-import { HomeComponent } from './components/home/home.component';
+import { SignupComponent } from './components/public/signup/signup.component';
+import { LoginComponent } from './components/public/login/login.component';
+import { HomeComponent } from './components/public/home/home.component';
 import { SecureHomeComponent } from './components/secure/secure-home/secure-home.component';
 import { ProfileComponent } from './components/secure/profile/profile.component';
+import { PlaceholderComponent } from './components/common/placeholder/placeholder.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -28,6 +29,11 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent
+ 
+  },
+  {
+    path: 'ph',
+    component: PlaceholderComponent
  
   },
   {
